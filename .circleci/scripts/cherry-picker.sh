@@ -133,9 +133,7 @@ pr_number=$(echo "$resp" | jq '.items[].number')
 
 # comment on the PR with the build number to make it easy to re-run the job when
 # cherry-pick labels are added in the future
-github_message=":cherries: Cherry pick starting...
-
-To cherry-pick post-merge, add backport labels and re-run ${CIRCLE_BUILD_URL}."
+github_message=":cherries: Starting backport cherry picking.\n\nTo cherry-pick post-merge, add backport labels and re-run ${CIRCLE_BUILD_URL}."
 curl -f -s -H "Authorization: token ${GITHUB_TOKEN}" \
     -X POST \
     -d "{ \"body\": \"${github_message}\"}" \
